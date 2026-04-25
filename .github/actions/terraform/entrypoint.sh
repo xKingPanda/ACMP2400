@@ -9,5 +9,6 @@ export ARM_TENANT_ID=${INPUT_ARM_TENANT_ID}
 export STATE_KEY=${INPUT_STATE_KEY}
 export TF_STAGE=${INPUT_TF_STAGE}
 
-tofu plan
-tofu apply --auto-approve
+tofu -chdir=${INPUT_TF_STAGE} init -backend-config="key=${INPUT_STATE_KEY}.tfstate"
+tofu -chdir=${INPUT_TF_STAGE} plan -out=${INPUT_TF_STAGE}.tfplan
+tofu -chdir=${INPUT_TF_STAGE} apply ${INPUT_TF_STAGE}.tfplan
