@@ -2,8 +2,10 @@ FROM alpine:3.22.4@sha256:310c62b5e7ca5b08167e4384c68db0fd2905dd9c7493756d356e89
 
 RUN apk add --no-cache opentofu
 
-WORKDIR /app
+WORKDIR /github/workspace
 
-COPY entrypoint.sh .
+COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+RUN chmod +x /entrypoint.sh 
+
+ENTRYPOINT ["/entrypoint.sh"]
