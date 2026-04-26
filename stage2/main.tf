@@ -23,7 +23,7 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_container_registry" "student-acr" {
+resource "azurerm_container_registry" "michaelfuller-acr" {
   name = "acrmichaelfulleracmp2400"
   resource_group_name = "rg-michaelfuller"
   location = "Central US"
